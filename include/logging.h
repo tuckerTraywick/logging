@@ -3,12 +3,11 @@
 
 #include <stdio.h>
 
-#define LOG_FORMAT " [%s:%d:%s] "
-#define DEBUG_PREFIX   "DEBUG"
-#define INFO_PREFIX    "INFO"
-#define WARNING_PREFIX "WARNING"
-#define ERROR_PREFIX   "ERROR"
-#define TEST_PREFIX    "TEST"
+#define LOG_FORMAT "[%s:%d:%s] "
+#define DEBUG_PREFIX   "DEBUG "
+#define INFO_PREFIX    "INFO "
+#define WARNING_PREFIX "WARNING "
+#define ERROR_PREFIX   "ERROR "
 
 #define logDebug(string) if (logDebugOutput) {fprintf(logDebugOutput, DEBUG_PREFIX LOG_FORMAT string "\n", __FILE__, __LINE__, __func__);} else {}
 #define logfDebug(string, ...) if (logDebugOutput) {fprintf(logDebugOutput, DEBUG_PREFIX LOG_FORMAT string "\n", __FILE__, __LINE__, __func__, __VA_ARGS__);} else {}
@@ -22,20 +21,17 @@
 #define logError(string) if (logErrorOutput) {fprintf(logErrorOutput, ERROR_PREFIX LOG_FORMAT string "\n", __FILE__, __LINE__, __func__);} else {}
 #define logfError(string, ...) if (logErrorOutput) {fprintf(logErrorOutput, ERROR_PREFIX LOG_FORMAT string "\n", __FILE__, __LINE__, __func__, __VA_ARGS__);} else {}
 
-#define logTest(string) if (logErrorOutput) {fprintf(logErrorOutput, ERROR_PREFIX LOG_FORMAT string "\n", __FILE__, __LINE__, __func__);} else {}
-#define logfTest(string, ...) if (logErrorOutput) {fprintf(logErrorOutput, ERROR_PREFIX LOG_FORMAT string "\n", __FILE__, __LINE__, __func__, __VA_ARGS__);} else {}
-
 #define putsDebug(string) if (logDebugOutput) {fputs((string), logDebugOutput);} else {}
 #define printfDebug(string, ...) if (logDebugOutput) {fprintf(logDebugOutput, (string), __VA_ARGS__);} else {}
 
 #define putsInfo(string) if (logInfoOutput) {fputs((string), logInfoOutput);} else {}
 #define printfInfo(string, ...) if (logInfoOutput) {fprintf(logInfoOutput, (string), __VA_ARGS__);} else {}
 
-#define putsWarning(string) if (logWarningOutput) {fputs((string), logDebugOutput);} else {}
-#define printfWarning(string, ...) if (logWarningOutput) {fprintf(logDebugOutput, (string), __VA_ARGS__);} else {}
+#define putsWarning(string) if (logWarningOutput) {fputs((string), logWarningOutput);} else {}
+#define printfWarning(string, ...) if (logWarningOutput) {fprintf(logWarningOutput, (string), __VA_ARGS__);} else {}
 
-#define putsError(string) if (logErrorOutput) {fputs((string), logDebugOutput);} else {}
-#define printfError(string, ...) if (logErrorOutput) {fprintf(logDebugOutput, (string), __VA_ARGS__);} else {}
+#define putsError(string) if (logErrorOutput) {fputs((string), logErrorOutput);} else {}
+#define printfError(string, ...) if (logErrorOutput) {fprintf(logErrorOutput, (string), __VA_ARGS__);} else {}
 
 // These variables need to be set by code that uses this header.
 extern FILE *logDebugOutput;
